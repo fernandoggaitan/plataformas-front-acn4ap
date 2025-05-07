@@ -1,11 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
 
 import { useState } from 'react';
 
 export default function CandidatoItem({ nombre, imagen, onChangeVotos }) {
 
+    const [votos, setVotos] = useState(0);
     const [votos, setVotos] = useState(0);
 
     const sumar = () => {
@@ -43,3 +43,4 @@ export default function CandidatoItem({ nombre, imagen, onChangeVotos }) {
     )
 
 }
+
