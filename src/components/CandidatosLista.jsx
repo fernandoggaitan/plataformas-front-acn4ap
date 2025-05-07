@@ -1,7 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CandidatoItem from './CandidatoItem';
-import { useState } from 'react';
+import { use, useState } from 'react';
 
 export default function CandidatosLista(){
 
@@ -11,42 +11,39 @@ export default function CandidatosLista(){
         {
             ID: 1,
             nombre: "Sofía",
-            imagen: "https://randomuser.me/api/portraits/women/90.jpg",
-            votos: 0
+            imagen: "https://randomuser.me/api/portraits/women/90.jpg"
         },
         {
             ID: 2,
-            nombre: "Pablo",
-            imagen: "https://randomuser.me/api/portraits/men/49.jpg",
-            votos: 0
+            nombre:"Pablo",
+            imagen: "https://randomuser.me/api/portraits/men/49.jpg"      
         },
         {
             ID: 3,
             nombre: "Valeria",
-            imagen: "https://randomuser.me/api/portraits/women/61.jpg",
-            votos: 0
+            imagen: "https://randomuser.me/api/portraits/women/61.jpg"
         }
     ]);
 
-    const handlerCandidato = (diferencia) => {
-        setCantVotos( cant_votos + diferencia );
+    const handleVotos = (votos_actualizado) => {
+        setCantVotos( votos_actualizado + cant_votos );
     }
 
     return (
         <>
-            <p> Cantidad: {cant_votos} </p>
-            <Row>
-                {lista.map( c => (
-                    <Col key={c.ID}>
-                        <CandidatoItem
-                            ID={c.ID}           
-                            nombre={c.nombre}
-                            imagen={c.imagen}
-                            initialVotos={c.votos}
-                            changeVotos={handlerCandidato}
-                        />
-                    </Col>
-                ))}
+            <p> Cantidad de votos: {cant_votos} </p>
+            <Row>                
+                {
+                    lista.map( item => (
+                        <Col key={item.ID}>
+                            <CandidatoItem 
+                                nombre={item.nombre}
+                                imagen={item.imagen}
+                                onChangeVotos={handleVotos}
+                            />
+                        </Col>
+                    ))
+                }
             </Row>
         </>
     );
