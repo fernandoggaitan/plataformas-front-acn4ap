@@ -30,7 +30,7 @@ export default function Login(){
         });
 
         if( response.data.success ){
-            login( response.data.accessToken );
+            login( response.data );
             navigate("/dashboard");
 
         }else{
