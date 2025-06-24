@@ -12,6 +12,8 @@ import { useState } from 'react';
 //Importamos axios para consumir el API
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export default function Login(){
 
     const {login} = useAuth();
@@ -24,7 +26,7 @@ export default function Login(){
     const handleLogin = async(e) => {
         e.preventDefault();
 
-        const response = await axios.post("http://localhost:8888/login", {
+        const response = await axios.post(`${API_BASE_URL}/login`, {
             email,
             contrasena
         });

@@ -4,6 +4,8 @@ import axios from "axios";
 //Importar la información de useAuth
 import { useAuth } from '../contexts/AuthContext';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export default function Dashboard(){
 
     const [mensaje, setMensaje] = useState("");
@@ -15,7 +17,7 @@ export default function Dashboard(){
     }, []);
 
     const getWelcome = async () => {
-        const response = await axios.get("http://localhost:8888/welcome", {
+        const response = await axios.get(`${API_BASE_URL}/welcome`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
